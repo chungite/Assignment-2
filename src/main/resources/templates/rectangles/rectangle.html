@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rectangle List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Optional: Additional custom styles */
+        /* Add your custom CSS here if needed */
+        .color-badge {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Rectangles</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Width</th>
+                    <th>Height</th>
+                    <th>Color</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="rectangle : ${rectangles}">
+                    <!-- Displaying fields without showing ID -->
+                    <td><a th:href="@{/rectangle/{id}(id=${rectangle.id})}" th:text="${rectangle.name}"></a></td>
+                    <td th:text="${rectangle.width}">10</td>
+                    <td th:text="${rectangle.height}">20</td>
+                    <td>
+                        <span class="color-badge" th:style="'background-color: ' + ${rectangle.color}"></span>
+                    </td>
+                    <td><a class="btn btn-danger btn-sm" th:href="@{/rectangle/delete/{id}(id=${rectangle.id})}" >Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn btn-primary"><a href="/rectangle/new" style="color: white;">Add new rectangle</a></button>
+    </div>
+</body>
+</html>

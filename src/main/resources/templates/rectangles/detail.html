@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        form {
+            max-width: 600px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-back {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 14px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Rectangle Details</h2>
+        <form th:action="@{/rectangle/update/{id}(id=${rectangle.id})}" method="post">
+            <div class="form-group">
+                <label>ID:</label>
+                <span th:text="${rectangle.id}"></span>
+            </div>
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name" class="form-control" th:value="${rectangle.name}" />
+            </div>
+            <div class="form-group">
+                <label>Width:</label>
+                <input type="number" name="width" class="form-control" th:value="${rectangle.width}" />
+            </div>
+            <div class="form-group">
+                <label>Height:</label>
+                <input type="number" name="height" class="form-control" th:value="${rectangle.height}" />
+            </div>
+            <div class="form-group">
+                <label>Color:</label>
+                <input type="text" name="color" class="form-control" th:value="${rectangle.color}" />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <a th:href="@{/rectangle}" class="btn-back">Back to List</a>
+    </div>
+</body>
+</html>

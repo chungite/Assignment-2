@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Rectangle</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+        button[type="submit"] {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 14px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add New Rectangle</h2>
+        <form method="post" th:action="@{/rectangle/add}" th:object="${rectangle}">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name" class="form-control" th:field="*{name}" required />
+            </div>
+            <div class="form-group">
+                <label>Width:</label>
+                <input type="number" name="width" class="form-control" th:field="*{width}" required />
+            </div>
+            <div class="form-group">
+                <label>Height:</label>
+                <input type="number" name="height" class="form-control" th:field="*{height}" required />
+            </div>
+            <div class="form-group">
+                <label>Color:</label>
+                <input type="text" name="color" class="form-control" th:field="*{color}" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Rectangle</button>
+        </form>
+      
+    </div>
+</body>
+</html>
